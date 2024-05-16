@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/d1758bd918.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Freeman&display=swap" rel="stylesheet">
+    <title>Home</title>
+</head>
+<style>
+    body {
+        margin: 2em;
+        font-family: "Freeman", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    form {
+        margin-top: 5em;
+    }
+    .example {
+        margin-top: 3em;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .error-message {
+        margin-top: 3em;
+        display: flex;
+        justify-content: center;
+        color: red;
+    }
+    .submit-button {
+        display: flex;
+        justify-content: center;
+        color: red;
+    }
+    .submit-button button {
+        font-size: 30px;
+    }
+    .example p {
+        font-size: 30px;
+        text-align: center;
+    }
+</style>
+<body>
+    <header>
+        <img src="{{url_for('static', filename='images/school_logo.png')}}" style="margin-right: 1em;">
+        <div>
+            <p style="margin: 0;font-size: 1.5em;">CBSE Student Allocation System</p>
+        </div>
+    </header>
+    <form method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="subjects" aria-describedby="emailHelp" placeholder="Enter the subject codes here" required>
+        <small id="emailHelp" class="form-text text-muted">eg : 016,048,027</small>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="exampleInputPassword1" name="number_of_students_per_class" placeholder="Enter number of students per class" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="exampleInputPassword1" name="rows_number" placeholder="Enter number of rows" required>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="exampleInputPassword1" name="cols_number" placeholder="Enter number of columns" required>
+      </div>
+        <div class="input-group mb-3">
+          <div class="custom-file">
+            <input type="file" name="the_file" class="custom-file-input" id="inputGroupFile01" required accept=".pdf">
+            <label class="custom-file-label" id="input1" for="inputGroupFile01">Choose 10th/12th (PDF ONLY)</label>
+          </div>
+        </div>
+        <div class="submit-button"><button class="btn btn-dark" type="submit">Submit</button></div>
+    </form>
+    <div class="error-message">
+        <p style="color: red">{{error}}</p>
+    </div>
+    <div class="example">
+        <p>Below picture is an example of the format of the Consolidated Student Sheet</p>
+        <img src="{{url_for('static', filename='images/example_of_consolidated_sheet.png')}}">
+    </div>
+    <script>
+      document.querySelector('.custom-file-input').addEventListener('change', function (e) {
+        var fileName = document.getElementById("inputGroupFile01").files[0].name;
+        var nextSibling = document.getElementById('input1')
+        nextSibling.innerText = fileName;
+      });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/d1758bd918.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Freeman&display=swap" rel="stylesheet">
+    <title>Sorted Data</title>
+</head>
+<style type="text/css">
+  body {
+        margin: 2em;
+        font-family: "Freeman", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+  .tables {
+    margin-top: 3em;
+  }
+  tr {
+    display: flex;
+    flex-direction: column;
+  }
+  table {
+    display: flex;
+    flex-direction: row;
+  }
+  .download-button {
+    display: flex;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+  }
+  .download-button a button {
+    border: none;
+  }
+</style>
+<body>
+  <div class="download-button">
+    <a href="/excelstudentdata"><button type="button" class="btn btn-dark">Download Excel Sheet</button></a>
+  </div>
+  <div class="tables">
+  <table class="table table-bordered">
+    {% for subject_code in dict_students %}
+    <thead>
+      <tr>
+        <th scope="col">{{subject_code}}</th>
+        <div class="td">
+        {% for student in dict_students[subject_code] %}
+        <td>{{student}}</td>
+         {% endfor %}
+         </div>
+       </th>
+      </tr>
+    </thead>
+  {% endfor %}
+</table>
+</div>
+</body>
+</html>
